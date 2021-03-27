@@ -4,6 +4,8 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.service.ArrayCalculationService;
 
 public class ArrayCalculationServiceImpl implements ArrayCalculationService {
+
+    @Override
     public int findSum(CustomArray array) {
         int sum = 0;
         for (int i = 0; i < array.getLength(); i++) {
@@ -12,7 +14,9 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
         return sum;
     }
 
+    @Override
     public int findAverage(CustomArray array) {
         return findSum(array) / array.getLength();
     }
+
 }

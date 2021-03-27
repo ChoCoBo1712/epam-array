@@ -5,6 +5,7 @@ import com.chocobo.array.service.ArraySearchService;
 
 public class ArraySearchServiceImpl implements ArraySearchService {
 
+    @Override
     public int findMin(CustomArray array) {
         int min = array.getElement(0);
         for (int i = 1; i < array.getLength(); i++) {
@@ -15,6 +16,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
         return min;
     }
 
+    @Override
     public int findMax(CustomArray array) {
         int max = array.getElement(0);
         for (int i = 1; i < array.getLength(); i++) {
@@ -25,6 +27,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
         return max;
     }
 
+    @Override
     public int findPositivesCount(CustomArray array) {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
@@ -35,6 +38,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
         return count;
     }
 
+    @Override
     public int findNegativesCount(CustomArray array) {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
