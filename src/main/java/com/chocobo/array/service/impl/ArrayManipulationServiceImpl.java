@@ -1,9 +1,11 @@
-package com.chocobo.array.service;
+package com.chocobo.array.service.impl;
 
 import com.chocobo.array.entity.CustomArray;
+import com.chocobo.array.service.ArrayManipulationService;
 
-public class ArrayManipulator {
-    public static void replaceNegatives(CustomArray array, int number) {
+public class ArrayManipulationServiceImpl implements ArrayManipulationService {
+
+    public void replaceNegatives(CustomArray array, int number) {
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) < 0) {
                 array.setElement(i, number);
@@ -11,7 +13,7 @@ public class ArrayManipulator {
         }
     }
 
-    public static void replacePositives(CustomArray array, int number) {
+    public void replacePositives(CustomArray array, int number) {
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) < 0) {
                 array.setElement(i, number);

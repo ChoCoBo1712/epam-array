@@ -4,38 +4,31 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 public class CustomArray {
-    private ArrayList<Integer> collection;
-    private int length;
+
+    private final int[] collection;
 
     public CustomArray(int length) {
         if (length < 1) {
             throw new IllegalArgumentException();
         }
-
-        this.length = length;
-        collection = new ArrayList<>();
-
-        for(int i = 0; i < length; i++) {
-            collection.add(0);
-        }
+        collection = new int[length];
     }
 
     public int getElement(int index) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= collection.length) {
             throw new IndexOutOfBoundsException();
         }
-        return collection.get(index);
+        return collection[index];
     }
 
     public void setElement(int index, int number) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= collection.length) {
             throw new IndexOutOfBoundsException();
         }
-
-        collection.set(index, number);
+        collection[index] =  number;
     }
 
     public int getLength() {
-        return length;
+        return collection.length;
     }
 }

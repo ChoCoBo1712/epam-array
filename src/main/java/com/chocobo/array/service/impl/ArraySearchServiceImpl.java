@@ -1,53 +1,47 @@
-package com.chocobo.array.service;
+package com.chocobo.array.service.impl;
 
 import com.chocobo.array.entity.CustomArray;
+import com.chocobo.array.service.ArraySearchService;
 
-public class ArraySearcher {
-    public static int getMin(CustomArray array) {
+public class ArraySearchServiceImpl implements ArraySearchService {
+
+    public int findMin(CustomArray array) {
         int min = array.getElement(0);
-
         for (int i = 1; i < array.getLength(); i++) {
             if (array.getElement(i) < min) {
                 min = array.getElement(i);
             }
         }
-
         return min;
     }
 
-    public static int getMax(CustomArray array) {
+    public int findMax(CustomArray array) {
         int max = array.getElement(0);
-
         for (int i = 1; i < array.getLength(); i++) {
             if (array.getElement(i) > max) {
                 max = array.getElement(i);
             }
         }
-
         return max;
     }
 
-    public static int getPositivesCount(CustomArray array) {
+    public int findPositivesCount(CustomArray array) {
         int count = 0;
-
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) >= 0) {
                 count++;
             }
         }
-
         return count;
     }
 
-    public static int getNegativesCount(CustomArray array) {
+    public int findNegativesCount(CustomArray array) {
         int count = 0;
-
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) < 0) {
                 count++;
             }
         }
-
         return count;
     }
 }
