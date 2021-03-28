@@ -2,7 +2,7 @@ package com.chocobo.array.parser;
 
 import java.util.stream.Stream;
 
-public interface FileParser {
+public interface StreamParser {
 
     String[] parseLine(Stream<String> lines);
 }

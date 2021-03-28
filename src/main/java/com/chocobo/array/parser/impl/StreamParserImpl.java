@@ -1,10 +1,10 @@
 package com.chocobo.array.parser.impl;
 
-import com.chocobo.array.parser.FileParser;
+import com.chocobo.array.parser.StreamParser;
 
 import java.util.stream.Stream;
 
-public class FileParserImpl implements FileParser {
+public class StreamParserImpl implements StreamParser {
 
     @Override
     public String[] parseLine(Stream<String> lines) {
