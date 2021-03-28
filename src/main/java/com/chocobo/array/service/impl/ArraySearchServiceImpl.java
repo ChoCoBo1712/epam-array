@@ -3,8 +3,12 @@ package com.chocobo.array.service.impl;
 import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArraySearchService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ArraySearchServiceImpl implements ArraySearchService {
+
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public int findMin(CustomArray array) throws CustomArrayException {

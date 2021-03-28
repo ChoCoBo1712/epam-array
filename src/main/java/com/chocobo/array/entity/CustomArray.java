@@ -12,6 +12,7 @@ public class CustomArray {
 
     public CustomArray(int length) throws CustomArrayException {
         if (length < 0) {
+            logger.log(Level.ERROR, "Illegal length for array");
             throw new CustomArrayException("Illegal length for array");
         }
         collection = new int[length];
@@ -20,6 +21,7 @@ public class CustomArray {
 
     public int getElement(int index) throws CustomArrayException {
         if (index < 0 || index >= collection.length) {
+            logger.log(Level.ERROR, "Index out of bounds");
             throw new CustomArrayException("Index out of bounds");
         }
         logger.log(Level.INFO, "Element passed");
@@ -28,6 +30,7 @@ public class CustomArray {
 
     public void setElement(int index, int number) throws CustomArrayException {
         if (index < 0 || index >= collection.length) {
+            logger.log(Level.ERROR, "Index out of bounds");
             throw new CustomArrayException("Index out of bounds");
         }
         collection[index] =  number;
