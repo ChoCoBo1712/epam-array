@@ -17,14 +17,14 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
         for (int i = 0; i < array.getLength(); i++) {
             sum += array.getElement(i);
         }
-        logger.log(Level.INFO, "Array sum = " + sum);
+        logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
     }
 
     @Override
     public int findAverage(CustomArray array) throws CustomArrayException {
         int average = findSum(array) / array.getLength();
-        logger.log(Level.INFO, "Array average = " + average);
+        logger.log(Level.INFO, "Array average is " + average);
         return average;
     }
 }

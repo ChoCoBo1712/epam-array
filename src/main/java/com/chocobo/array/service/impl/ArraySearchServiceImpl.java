@@ -3,6 +3,7 @@ package com.chocobo.array.service.impl;
 import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArraySearchService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,6 +19,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                 min = array.getElement(i);
             }
         }
+        logger.log(Level.INFO, "Minimal value is " + min);
         return min;
     }
 
@@ -29,6 +31,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                 max = array.getElement(i);
             }
         }
+        logger.log(Level.INFO, "Maximal value is " + max);
         return max;
     }
 
@@ -40,6 +43,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                 count++;
             }
         }
+        logger.log(Level.INFO, "Positives count is " + count);
         return count;
     }
 
@@ -51,6 +55,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                 count++;
             }
         }
+        logger.log(Level.INFO, "Negatives count is " + count);
         return count;
     }
 }
