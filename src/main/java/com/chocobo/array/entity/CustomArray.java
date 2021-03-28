@@ -5,6 +5,10 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class CustomArray {
 
     private static final Logger logger = LogManager.getLogger();
@@ -16,7 +20,6 @@ public class CustomArray {
             throw new CustomArrayException("Illegal length for array");
         }
         collection = new int[length];
-        logger.log(Level.INFO, "Array created");
     }
 
     public int getElement(int index) throws CustomArrayException {
@@ -24,7 +27,6 @@ public class CustomArray {
             logger.log(Level.ERROR, "Index out of bounds");
             throw new CustomArrayException("Index out of bounds");
         }
-        logger.log(Level.INFO, "Element passed");
         return collection[index];
     }
 
@@ -34,23 +36,23 @@ public class CustomArray {
             throw new CustomArrayException("Index out of bounds");
         }
         collection[index] =  number;
-        logger.log(Level.INFO, "Element set");
     }
 
     public int getLength() {
-        logger.log(Level.INFO, "Length passed");
         return collection.length;
     }
 
     @Override
     public boolean equals(Object object) {
         if (object == this) {
-            logger.log(Level.INFO, "Given arrays are equal");
             return true;
         }
 
+        if (object == null) {
+            return false;
+        }
+
         if (!(object instanceof CustomArray)) {
-            logger.log(Level.INFO, "Given arrays are not equal");
             return false;
         }
 
@@ -59,16 +61,32 @@ public class CustomArray {
         try {
             for (int i = 0; i < array.getLength(); i++) {
                 if (collection[i] != array.getElement(i)) {
-                    logger.log(Level.INFO, "Given arrays are not equal");
                     return false;
                 }
             }
         } catch (CustomArrayException e) {
-            logger.log(Level.INFO, "Given arrays are not equal");
             return false;
         }
 
-        logger.log(Level.INFO, "Given arrays are not equal");
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 7;
+        for (int j : this.collection) {
+            result = 31 * result + j;
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder("[");
+        for (int j : this.collection) {
+            string.append(j);
+            string.append(", ");
+        }
+        return string.toString();
     }
 }
