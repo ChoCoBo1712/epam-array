@@ -10,24 +10,20 @@ import org.testng.annotations.Test;
 
 public class ArraySearchServiceImplTest {
 
-    private CustomArray array;
-    private CustomArray anotherArray;
     private ArraySearchService service;
 
     @BeforeClass
-    public void setUp() throws CustomArrayException {
-        array = new CustomArray(5);
-        anotherArray = new CustomArray(5);
-        for (int i = 0; i < array.getLength(); i++) {
-            array.setElement(i, i + 1);
-            anotherArray.setElement(i, i - 2);
-        }
-
+    public void setUp() {
         service = new ArraySearchServiceImpl();
     }
 
     @Test
     public void findMinTest() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
+        for (int i = 0; i < array.getLength(); i++) {
+            array.setElement(i, i + 1);
+        }
+
         int actual = service.findMin(array);
         int expected = 1;
         Assert.assertEquals(actual, expected);
@@ -35,6 +31,11 @@ public class ArraySearchServiceImplTest {
 
     @Test
     public void findMaxTest() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
+        for (int i = 0; i < array.getLength(); i++) {
+            array.setElement(i, i + 1);
+        }
+
         int actual = service.findMax(array);
         int expected = 5;
         Assert.assertEquals(actual, expected);
@@ -42,6 +43,11 @@ public class ArraySearchServiceImplTest {
 
     @Test
     public void findPositivesCountTest() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
+        for (int i = 0; i < array.getLength(); i++) {
+            array.setElement(i, i + 1);
+        }
+
         int actual = service.findPositivesCount(array);
         int expected = 5;
         Assert.assertEquals(actual, expected);
@@ -49,7 +55,12 @@ public class ArraySearchServiceImplTest {
 
     @Test
     public void findNegativesCountTest() throws CustomArrayException {
-        int actual = service.findNegativesCount(anotherArray);
+        CustomArray array = new CustomArray(5);
+        for (int i = 0; i < array.getLength(); i++) {
+            array.setElement(i, i - 2);
+        }
+
+        int actual = service.findNegativesCount(array);
         int expected = 2;
         Assert.assertEquals(actual, expected);
     }
