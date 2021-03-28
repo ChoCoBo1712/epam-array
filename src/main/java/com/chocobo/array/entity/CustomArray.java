@@ -1,5 +1,6 @@
 package com.chocobo.array.entity;
 
+import com.chocobo.array.exception.CustomArrayException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,17 +13,17 @@ public class CustomArray {
     static final Logger logger = LogManager.getLogger();
     private final int[] collection;
 
-    public CustomArray(int length) {
-        if (length < 1) {
-            throw new IllegalArgumentException();
+    public CustomArray(int length) throws CustomArrayException {
+        if (length < 0) {
+            throw new CustomArrayException("Illegal length for array");
         }
         collection = new int[length];
         logger.log(Level.INFO, "Array created");
     }
 
-    public int getElement(int index) {
+    public int getElement(int index) throws CustomArrayException {
         if (index < 0 || index >= collection.length) {
-            throw new IndexOutOfBoundsException();
+            throw new CustomArrayException("Index out of bounds");
         }
         return collection[index];
     }

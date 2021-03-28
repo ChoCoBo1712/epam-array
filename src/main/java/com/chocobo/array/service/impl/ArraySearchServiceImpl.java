@@ -1,12 +1,13 @@
 package com.chocobo.array.service.impl;
 
 import com.chocobo.array.entity.CustomArray;
+import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArraySearchService;
 
 public class ArraySearchServiceImpl implements ArraySearchService {
 
     @Override
-    public int findMin(CustomArray array) {
+    public int findMin(CustomArray array) throws CustomArrayException {
         int min = array.getElement(0);
         for (int i = 1; i < array.getLength(); i++) {
             if (array.getElement(i) < min) {
@@ -17,7 +18,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
     }
 
     @Override
-    public int findMax(CustomArray array) {
+    public int findMax(CustomArray array) throws CustomArrayException {
         int max = array.getElement(0);
         for (int i = 1; i < array.getLength(); i++) {
             if (array.getElement(i) > max) {
@@ -28,7 +29,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
     }
 
     @Override
-    public int findPositivesCount(CustomArray array) {
+    public int findPositivesCount(CustomArray array) throws CustomArrayException {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) >= 0) {
@@ -39,7 +40,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
     }
 
     @Override
-    public int findNegativesCount(CustomArray array) {
+    public int findNegativesCount(CustomArray array) throws CustomArrayException {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
             if (array.getElement(i) < 0) {

@@ -1,9 +1,10 @@
 package com.chocobo.array.service;
 
 import com.chocobo.array.entity.CustomArray;
+import com.chocobo.array.exception.CustomArrayException;
 
 public interface ArrayCalculationService {
 
-    int findSum(CustomArray array);
-    int findAverage(CustomArray array);
+    int findSum(CustomArray array) throws CustomArrayException;
+    int findAverage(CustomArray array) throws CustomArrayException;
 }
