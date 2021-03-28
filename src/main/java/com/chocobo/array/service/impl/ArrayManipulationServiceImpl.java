@@ -14,8 +14,13 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
     @Override
     public void replaceNegatives(CustomArray array, int number) throws CustomArrayException {
         for (int i = 0; i < array.getLength(); i++) {
-            if (array.getElement(i) < 0) {
-                array.setElement(i, number);
+            try {
+                if (array.getElement(i) < 0) {
+                    array.setElement(i, number);
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
             }
         }
         logger.log(Level.INFO, "Negatives replaced with " + number);
@@ -24,8 +29,13 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
     @Override
     public void replacePositives(CustomArray array, int number) throws CustomArrayException {
         for (int i = 0; i < array.getLength(); i++) {
-            if (array.getElement(i) >= 0) {
-                array.setElement(i, number);
+            try {
+                if (array.getElement(i) >= 0) {
+                    array.setElement(i, number);
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
             }
         }
         logger.log(Level.INFO, "Positives replaced with " + number);

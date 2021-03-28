@@ -13,34 +13,51 @@ public class ArraySearchServiceImpl implements ArraySearchService {
 
     @Override
     public int findMin(CustomArray array) throws CustomArrayException {
-        int min = array.getElement(0);
-        for (int i = 1; i < array.getLength(); i++) {
-            if (array.getElement(i) < min) {
-                min = array.getElement(i);
+        try {
+            int min = array.getElement(0);
+            for (int i = 1; i < array.getLength(); i++) {
+                if (array.getElement(i) < min) {
+                    min = array.getElement(i);
+                }
             }
+            logger.log(Level.INFO, "Minimal value is " + min);
+            return min;
+
+        } catch (CustomArrayException e) {
+            logger.log(Level.ERROR, "Index out of bounds");
+            throw e;
         }
-        logger.log(Level.INFO, "Minimal value is " + min);
-        return min;
     }
 
     @Override
     public int findMax(CustomArray array) throws CustomArrayException {
-        int max = array.getElement(0);
-        for (int i = 1; i < array.getLength(); i++) {
-            if (array.getElement(i) > max) {
-                max = array.getElement(i);
+        try {
+            int max = array.getElement(0);
+            for (int i = 1; i < array.getLength(); i++) {
+                if (array.getElement(i) > max) {
+                    max = array.getElement(i);
+                }
             }
+
+            logger.log(Level.INFO, "Maximal value is " + max);
+            return max;
+        } catch (CustomArrayException e) {
+            logger.log(Level.ERROR, "Index out of bounds");
+            throw e;
         }
-        logger.log(Level.INFO, "Maximal value is " + max);
-        return max;
     }
 
     @Override
     public int findPositivesCount(CustomArray array) throws CustomArrayException {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
-            if (array.getElement(i) >= 0) {
-                count++;
+            try {
+                if (array.getElement(i) >= 0) {
+                    count++;
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
             }
         }
         logger.log(Level.INFO, "Positives count is " + count);
@@ -51,8 +68,13 @@ public class ArraySearchServiceImpl implements ArraySearchService {
     public int findNegativesCount(CustomArray array) throws CustomArrayException {
         int count = 0;
         for (int i = 0; i < array.getLength(); i++) {
-            if (array.getElement(i) < 0) {
-                count++;
+            try {
+                if (array.getElement(i) < 0) {
+                    count++;
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
             }
         }
         logger.log(Level.INFO, "Negatives count is " + count);

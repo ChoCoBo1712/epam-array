@@ -15,7 +15,12 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
     public int findSum(CustomArray array) throws CustomArrayException {
         int sum = 0;
         for (int i = 0; i < array.getLength(); i++) {
-            sum += array.getElement(i);
+            try {
+                sum += array.getElement(i);
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
         }
         logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
