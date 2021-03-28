@@ -4,7 +4,11 @@
     "properties": {
       "property": {
         "name": "pattern_console",
-        "value": "%d%5level %c{5} - %msg%n"
+        "value": "%d %5level %c{1} - %msg%n"
+      },
+      "property": {
+        "name": "pattern_file",
+        "value": "%d %5level %c{5} - %msg%n"
       }
     },
     "appenders": {
@@ -14,6 +18,19 @@
         "PatternLayout": {
           "pattern": "${pattern_console}"
         }
+      },
+      "RollingFile": {
+        "name": "File",
+        "fileName": "logs/last.log",
+        "filePattern": "logs/${date:MM.yyyy}/array-%d{dd.MM.yyyy}-%i.log.gz",
+        "policies": {
+          "SizeBasedTriggeringPolicy" : {
+            "size": "100 kB"
+          }
+        },
+        "DefaultRolloverStrategy": {
+          "max": "10"
+        }
       }
     },
     "loggers": {
@@ -21,6 +38,9 @@
         "level": "debug",
         "AppenderRef": {
           "ref": "Console"
+        },
+        "AppenderRef": {
+          "ref": "File"
         }
       }
     }
