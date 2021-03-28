@@ -41,4 +41,34 @@ public class CustomArray {
         logger.log(Level.INFO, "Length passed");
         return collection.length;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            logger.log(Level.INFO, "Given arrays are equal");
+            return true;
+        }
+
+        if (!(object instanceof CustomArray)) {
+            logger.log(Level.INFO, "Given arrays are not equal");
+            return false;
+        }
+
+        CustomArray array = (CustomArray) object;
+
+        try {
+            for (int i = 0; i < array.getLength(); i++) {
+                if (collection[i] != array.getElement(i)) {
+                    logger.log(Level.INFO, "Given arrays are not equal");
+                    return false;
+                }
+            }
+        } catch (CustomArrayException e) {
+            logger.log(Level.INFO, "Given arrays are not equal");
+            return false;
+        }
+
+        logger.log(Level.INFO, "Given arrays are not equal");
+        return true;
+    }
 }

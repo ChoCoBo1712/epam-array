@@ -3,6 +3,7 @@ package com.chocobo.array.service.impl;
 import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArrayManipulationService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,14 +18,16 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
                 array.setElement(i, number);
             }
         }
+        logger.log(Level.INFO, "Negatives replaced with " + number);
     }
 
     @Override
     public void replacePositives(CustomArray array, int number) throws CustomArrayException {
         for (int i = 0; i < array.getLength(); i++) {
-            if (array.getElement(i) < 0) {
+            if (array.getElement(i) >= 0) {
                 array.setElement(i, number);
             }
         }
+        logger.log(Level.INFO, "Positives replaced with " + number);
     }
 }
