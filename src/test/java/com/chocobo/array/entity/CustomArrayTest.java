@@ -24,5 +24,28 @@ public class CustomArrayTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void getElementExceptionTest() throws CustomArrayException {
+        array.getElement(-1);
+    }
 
+    @Test
+    public void setElementTest() throws CustomArrayException {
+        array.setElement(0, 10);
+        int actual = array.getElement(0);
+        int expected = 10;
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void setElementExceptionTest() throws CustomArrayException {
+        array.setElement(5, 10);
+    }
+
+    @Test
+    public void getLengthTest() {
+        int actual = array.getLength();
+        int expected = 5;
+        Assert.assertEquals(actual, expected);
+    }
 }

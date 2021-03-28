@@ -26,14 +26,16 @@ public class CustomArray {
         return collection[index];
     }
 
-    public void setElement(int index, int number) {
+    public void setElement(int index, int number) throws CustomArrayException {
         if (index < 0 || index >= collection.length) {
-            throw new IndexOutOfBoundsException();
+            throw new CustomArrayException("Index out of bounds");
         }
         collection[index] =  number;
+        logger.log(Level.INFO, "Element set");
     }
 
     public int getLength() {
+        logger.log(Level.INFO, "Length passed");
         return collection.length;
     }
 }
