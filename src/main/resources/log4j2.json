@@ -1,0 +1,26 @@
+{ "configuration": {
+    "properties": {
+      "property": {
+        "name": "pattern",
+        "value": "%d %5level %logger{5} - %msg%n"
+      }
+    },
+    "appenders": {
+      "Console": {
+        "name": "Console",
+        "targer": "SYSTEM_OUT",
+        "PatternLayout": {
+          "pattern": "${pattern}"
+        }
+      }
+    },
+    "loggers": {
+      "root": {
+        "level": "all",
+        "AppenderRef": {
+          "ref": "Console"
+        }
+      }
+    }
+  }
+}
