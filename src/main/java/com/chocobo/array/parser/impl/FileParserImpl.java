@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class FileParserImpl implements FileParser {
 
     @Override
-    public String[] parseLine(Stream<String> stream) {
-        return stream.toArray(String[]::new);
+    public String[] parseLine(Stream<String> lines) {
+        return lines.toArray(String[]::new);
     }
 }

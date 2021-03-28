@@ -4,5 +4,5 @@ import java.util.stream.Stream;
 
 public interface FileParser {
 
-    String[] parseLine(Stream<String> stream);
+    String[] parseLine(Stream<String> lines);
 }
