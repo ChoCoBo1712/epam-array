@@ -1,10 +1,15 @@
 package com.chocobo.array.entity;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 public class CustomArray {
 
+    static final Logger logger = LogManager.getLogger();
     private final int[] collection;
 
     public CustomArray(int length) {
@@ -12,6 +17,7 @@ public class CustomArray {
             throw new IllegalArgumentException();
         }
         collection = new int[length];
+        logger.log(Level.INFO, "Array created");
     }
 
     public int getElement(int index) {
