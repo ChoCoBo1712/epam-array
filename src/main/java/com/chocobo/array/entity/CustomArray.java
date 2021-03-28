@@ -5,9 +5,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.EmptyStackException;
-
 public class CustomArray {
 
     static final Logger logger = LogManager.getLogger();
@@ -25,6 +22,7 @@ public class CustomArray {
         if (index < 0 || index >= collection.length) {
             throw new CustomArrayException("Index out of bounds");
         }
+        logger.log(Level.INFO, "Element passed");
         return collection[index];
     }
 

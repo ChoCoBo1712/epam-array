@@ -8,7 +8,7 @@
     "appenders": {
       "Console": {
         "name": "Console",
-        "targer": "SYSTEM_OUT",
+        "target": "SYSTEM_OUT",
         "PatternLayout": {
           "pattern": "${pattern}"
         }
@@ -16,7 +16,7 @@
     },
     "loggers": {
       "root": {
-        "level": "all",
+        "level": "info",
         "AppenderRef": {
           "ref": "Console"
         }
