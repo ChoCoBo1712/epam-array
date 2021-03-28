@@ -23,7 +23,7 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
                 throw e;
             }
         }
-        logger.log(Level.INFO, "Negatives replaced with " + number);
+        logger.log(Level.INFO, "Negatives replaced with " + number + ": " + array.toString());
     }
 
     @Override
@@ -38,6 +38,6 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
                 throw e;
             }
         }
-        logger.log(Level.INFO, "Positives replaced with " + number);
+        logger.log(Level.INFO, "Positives replaced with " + number + ": " + array.toString());
     }
 }

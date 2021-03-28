@@ -81,6 +81,7 @@ public class CustomArray {
             string.append(j);
             string.append(", ");
         }
+        string.replace(string.length() - 2, string.length(), "]");
         return string.toString();
     }
 }

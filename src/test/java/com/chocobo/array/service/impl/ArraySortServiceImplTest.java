@@ -39,7 +39,7 @@ public class ArraySortServiceImplTest {
 
     @Test
     public void quickSortTest() throws CustomArrayException {
-        service.quickSort(array, 0, array.getLength() - 1);
+        service.quickSort(array);
         Assert.assertEquals(array, sortedArray);
     }
 }

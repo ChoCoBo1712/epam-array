@@ -23,6 +23,7 @@ public class ArraySortServiceImpl implements ArraySortService {
                 }
                 array.setElement(j + 1, current);
             }
+            logger.log(Level.INFO, "Insertion sort done: " + array.toString());
         } catch (CustomArrayException e) {
             logger.log(Level.ERROR, "Index out of bounds");
             throw e;
@@ -45,6 +46,7 @@ public class ArraySortServiceImpl implements ArraySortService {
                 array.setElement(i, min);
                 array.setElement(minIndex, temp);
             }
+            logger.log(Level.INFO, "Selection sort done: " + array.toString());
         } catch (CustomArrayException e) {
             logger.log(Level.ERROR, "Index out of bounds");
             throw e;
@@ -52,18 +54,23 @@ public class ArraySortServiceImpl implements ArraySortService {
     }
 
     @Override
-    public void quickSort(CustomArray array, int begin, int end) throws CustomArrayException {
+    public void quickSort(CustomArray array) throws CustomArrayException {
         try {
-            if (end <= begin) {
-                return;
-            }
-            int pivot = partition(array, begin, end);
-            quickSort(array, begin, pivot - 1);
-            quickSort(array, pivot + 1, end);
+            internalQuickSort(array, 0, array.getLength() - 1);
+            logger.log(Level.INFO, "Quick sort done: " + array.toString());
         } catch (CustomArrayException e) {
             logger.log(Level.ERROR, "Index out of bounds");
             throw e;
         }
+    }
+
+    private void internalQuickSort(CustomArray array, int begin, int end) throws CustomArrayException {
+        if (end <= begin) {
+            return;
+        }
+        int pivot = partition(array, begin, end);
+        internalQuickSort(array, begin, pivot - 1);
+        internalQuickSort(array, pivot + 1, end);
     }
 
     private int partition(CustomArray array, int begin, int end) throws CustomArrayException {
