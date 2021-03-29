@@ -31,18 +31,19 @@ public class ArrayFileServiceImpl implements ArrayFileService {
             ArrayCreator arrayCreator = new ArrayCreatorImpl();
             Stream<String> stream = fileReader.readToStream(filePath);
             String[] lines = streamParser.parseStream(stream);
-            CustomArray array = null;
             for (String line: lines) {
                 if (validator.isValid(line)) {
-                    array = arrayCreator.createFromString(line);     
+                    logger.log(Level.INFO, "Read valid array: " + line);
+                    return arrayCreator.createFromString(line);
                 }
+                logger.log(Level.INFO, "Read invalid array: " + line);
             }
-            return array;
+            return null;
         } catch (IOException e) {
             logger.log(Level.ERROR, "Wrong file path");
             throw e;
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Wrong arguments");
+            logger.log(Level.ERROR, "Array Creation Error");
             throw e;
         }
     }

@@ -2,14 +2,14 @@
   "configuration": {
     "name": "Default",
     "properties": {
-      "property": {
+      "property": [{
         "name": "pattern_console",
         "value": "%d %5level %c{1} - %msg%n"
       },
-      "property": {
+      {
         "name": "pattern_file",
         "value": "%d %5level %c{5} - %msg%n"
-      }
+      }]
     },
     "appenders": {
       "Console": {
@@ -26,6 +26,9 @@
         "policies": {
           "SizeBasedTriggeringPolicy" : {
             "size": "100 kB"
+          },
+          "PatternLayout": {
+            "pattern": "${pattern_file}"
           }
         },
         "DefaultRolloverStrategy": {
@@ -36,12 +39,12 @@
     "loggers": {
       "root": {
         "level": "debug",
-        "AppenderRef": {
+        "AppenderRef": [{
           "ref": "Console"
         },
-        "AppenderRef": {
+        {
           "ref": "File"
-        }
+        }]
       }
     }
   }
