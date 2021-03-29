@@ -52,14 +52,12 @@ public class CustomArray {
 
         CustomArray array = (CustomArray) object;
 
-        try {
-            for (int i = 0; i < array.getLength(); i++) {
-                if (collection[i] != array.getElement(i)) {
-                    return false;
-                }
+        if (getLength() != array.collection.length)
+
+        for (int i = 0; i < array.collection.length; i++) {
+            if (collection[i] != array.collection[i]) {
+                return false;
             }
-        } catch (CustomArrayException e) {
-            return false;
         }
 
         return true;
