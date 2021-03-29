@@ -38,7 +38,7 @@ public class ArrayFileServiceImpl implements ArrayFileService {
                 }
                 logger.log(Level.INFO, "Read invalid array: " + line);
             }
-            return null;
+            return new CustomArray(0);
         } catch (IOException e) {
             logger.log(Level.ERROR, "Wrong file path");
             throw e;
