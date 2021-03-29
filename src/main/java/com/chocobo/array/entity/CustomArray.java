@@ -52,7 +52,9 @@ public class CustomArray {
 
         CustomArray array = (CustomArray) object;
 
-        if (getLength() != array.collection.length)
+        if (getLength() != array.collection.length) {
+            return false;
+        }
 
         for (int i = 0; i < array.collection.length; i++) {
             if (collection[i] != array.collection[i]) {
