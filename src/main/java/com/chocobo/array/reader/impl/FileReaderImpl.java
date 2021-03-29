@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class FileReaderImpl implements FileReader {
 
     @Override
-    public Stream<String> readFile(String filePath) throws IOException {
+    public Stream<String> readToStream(String filePath) throws IOException {
         return Files.lines(Path.of(filePath));
     }
 }

@@ -4,5 +4,5 @@ import java.util.stream.Stream;
 
 public interface StreamParser {
 
-    String[] parseLine(Stream<String> lines);
+    String[] parseStream(Stream<String> lines);
 }

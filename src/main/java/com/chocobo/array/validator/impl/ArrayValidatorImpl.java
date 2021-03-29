@@ -8,17 +8,15 @@ import java.util.List;
 public class ArrayValidatorImpl implements ArrayValidator {
 
     @Override
-    public List<Integer> validate(String line) {
-        List<Integer> numbers = new ArrayList<>();
-        String[] strings = line.split(", ");
-        for (String string : strings) {
+    public boolean isValid(String line) {
+        String[] numbers = line.split(", ");
+        for (String number : numbers) {
             try {
-                numbers.add(Integer.parseInt(string));
+                Integer.parseInt(number);
             } catch (NumberFormatException e) {
-                return new ArrayList<>();
+                return false;
             }
         }
-
-        return numbers;
+        return true;
     }
 }
