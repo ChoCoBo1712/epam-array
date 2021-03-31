@@ -6,5 +6,5 @@ import com.chocobo.array.exception.CustomArrayException;
 public interface ArrayCalculationService {
 
     int findSum(CustomArray array) throws CustomArrayException;
-    int findAverage(CustomArray array) throws CustomArrayException;
+    double findAverage(CustomArray array) throws CustomArrayException;
 }

@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.stream.IntStream;
+
 public class CustomArray {
 
     private static final Logger logger = LogManager.getLogger();
@@ -23,6 +25,11 @@ public class CustomArray {
             throw new CustomArrayException("Index out of bounds");
         }
         return collection[index];
+    }
+
+    public IntStream toIntStream() {
+        int[] clone = collection.clone();
+        return IntStream.of(clone);
     }
 
     public void setElement(int index, int number) throws CustomArrayException {

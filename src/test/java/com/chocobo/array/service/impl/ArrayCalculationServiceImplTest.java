@@ -31,7 +31,7 @@ public class ArrayCalculationServiceImplTest {
 
     @Test
     public void findAverageTest() throws CustomArrayException {
-        int actual = service.findAverage(array);
+        double actual = service.findAverage(array);
         int expected = 3;
         Assert.assertEquals(actual, expected);
     }

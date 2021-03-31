@@ -7,28 +7,26 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class ArrayCalculationServiceImpl implements ArrayCalculationService {
 
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public int findSum(CustomArray array) throws CustomArrayException {
-        int sum = 0;
-        for (int i = 0; i < array.getLength(); i++) {
-            try {
-                sum += array.getElement(i);
-            } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
-                throw e;
-            }
-        }
+    public int findSum(CustomArray array) {
+        int sum = array.toIntStream().sum();
         logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
     }
 
     @Override
-    public int findAverage(CustomArray array) throws CustomArrayException {
-        int average = findSum(array) / array.getLength();
+    public double findAverage(CustomArray array) throws CustomArrayException {
+        double average = array.toIntStream()
+                .average()
+                .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
         logger.log(Level.INFO, "Array average is " + average);
         return average;
     }
