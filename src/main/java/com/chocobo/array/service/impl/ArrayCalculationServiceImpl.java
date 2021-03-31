@@ -16,7 +16,12 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public int findSum(CustomArray array) {
+    public int findSum(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         int sum = array.toIntStream().sum();
         logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
@@ -24,6 +29,11 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
 
     @Override
     public double findAverage(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         double average = array.toIntStream()
                 .average()
                 .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
