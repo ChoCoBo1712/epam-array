@@ -22,6 +22,17 @@ public class CustomArrayTest {
     }
 
     @Test
+    public void toIntStreamTest() {
+        int[] primitivesArray = new int[]{1, 2, 3, 4, 5};
+
+        IntStream actualStream = array.toIntStream();
+        IntStream expectedStream = IntStream.of(primitivesArray);
+        int[] actual = actualStream.toArray();
+        int[] expected = expectedStream.toArray();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
     public void getElementTest() throws CustomArrayException {
         int actual = array.getElement(3);
         int expected = 4;
@@ -50,17 +61,6 @@ public class CustomArrayTest {
     public void getLengthTest() {
         int actual = array.getLength();
         int expected = 5;
-        Assert.assertEquals(actual, expected);
-    }
-
-    @Test
-    public void toIntStreamTest() {
-        int[] primitivesArray = new int[]{1, 2, 3, 4, 5};
-
-        IntStream actualStream = array.toIntStream();
-        IntStream expectedStream = IntStream.of(primitivesArray);
-        int[] actual = actualStream.toArray();
-        int[] expected = expectedStream.toArray();
         Assert.assertEquals(actual, expected);
     }
 }

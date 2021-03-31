@@ -22,7 +22,7 @@ public class ArrayFileServiceImpl implements ArrayFileService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public CustomArray readFromFile(String filePath) throws CustomArrayException, IOException {
+    public CustomArray readFromFile(String filePath) throws CustomArrayException {
         try {
             FileReader fileReader = new FileReaderImpl();
             StreamParser streamParser = new StreamParserImpl();
@@ -37,11 +37,8 @@ public class ArrayFileServiceImpl implements ArrayFileService {
                 logger.log(Level.INFO, "Read invalid array: " + line);
             }
             return new CustomArray(0);
-        } catch (IOException e) {
-            logger.log(Level.ERROR, "Wrong file path");
-            throw e;
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Array Creation Error");
+            logger.log(Level.ERROR, e.getMessage());
             throw e;
         }
     }

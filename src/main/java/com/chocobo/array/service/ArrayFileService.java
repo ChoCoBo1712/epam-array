@@ -7,5 +7,5 @@ import java.io.IOException;
 
 public interface ArrayFileService {
 
-    CustomArray readFromFile(String filePath) throws CustomArrayException, IOException;
+    CustomArray readFromFile(String filePath) throws CustomArrayException;
 }

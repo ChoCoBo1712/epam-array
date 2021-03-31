@@ -7,10 +7,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 public class ArrayCalculationServiceImpl implements ArrayCalculationService {
 
     private static final Logger logger = LogManager.getLogger();

@@ -31,15 +31,30 @@ public class ArraySortServiceImplTest {
         Assert.assertEquals(array, sortedArray);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void insertionSortExceptionTest() throws CustomArrayException {
+        service.insertionSort(null);
+    }
+
     @Test
     public void selectionSortTest() throws CustomArrayException {
         service.selectionSort(array);
         Assert.assertEquals(array, sortedArray);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void selectionSortExceptionTest() throws CustomArrayException {
+        service.selectionSort(null);
+    }
+
     @Test
     public void quickSortTest() throws CustomArrayException {
         service.quickSort(array);
         Assert.assertEquals(array, sortedArray);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void quickSortExceptionTest() throws CustomArrayException {
+        service.quickSort(null);
     }
 }

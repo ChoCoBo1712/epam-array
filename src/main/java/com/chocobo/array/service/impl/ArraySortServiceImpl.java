@@ -13,6 +13,11 @@ public class ArraySortServiceImpl implements ArraySortService {
 
     @Override
     public void insertionSort(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         try {
             for (int i = 1; i < array.getLength(); i++) {
                 int current = array.getElement(i);
@@ -32,6 +37,11 @@ public class ArraySortServiceImpl implements ArraySortService {
 
     @Override
     public void selectionSort(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         try {
             for (int i = 0; i < array.getLength(); i++) {
                 int min = array.getElement(i);
@@ -55,6 +65,11 @@ public class ArraySortServiceImpl implements ArraySortService {
 
     @Override
     public void quickSort(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         try {
             internalQuickSort(array, 0, array.getLength() - 1);
             logger.log(Level.INFO, "Quick sort done: " + array.toString());

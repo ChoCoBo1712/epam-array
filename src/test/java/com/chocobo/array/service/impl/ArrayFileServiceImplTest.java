@@ -19,13 +19,13 @@ public class ArrayFileServiceImplTest {
     }
 
     @Test
-    public void readFromFileTest() throws CustomArrayException, IOException {
+    public void readFromFileTest() throws CustomArrayException {
         CustomArray expected = new CustomArray(5);
         for (int i = 0; i < expected.getLength(); i++) {
             expected.setElement(i, i + 1);
         }
 
-        CustomArray actual = service.readFromFile("data/array.txt");
+        CustomArray actual = service.readFromFile("src/main/resources/arrays.txt");
         Assert.assertEquals(actual, expected);
     }
 
