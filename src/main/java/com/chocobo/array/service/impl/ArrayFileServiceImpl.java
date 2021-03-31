@@ -23,15 +23,7 @@ public class ArrayFileServiceImpl implements ArrayFileService {
     public CustomArray readFromFile(String filePath) throws CustomArrayException {
         try {
             return fileReader.readToStream(filePath)
-                    .filter(line -> {
-                        boolean validationResult = ArrayValidator.isValid(line);
-                        if (validationResult) {
-                            logger.log(Level.INFO, "Read valid array: " + line);
-                        } else {
-                            logger.log(Level.INFO, "Read invalid array: " + line);
-                        }
-                        return validationResult;
-                    })
+                    .filter(this::validateAndLog)
                     .map(parser::parse)
                     .findFirst()
                     .orElseThrow(() -> new CustomArrayException("No valid arrays found"));
@@ -39,5 +31,15 @@ public class ArrayFileServiceImpl implements ArrayFileService {
             logger.log(Level.ERROR, e.getMessage());
             throw e;
         }
+    }
+
+    private boolean validateAndLog(String line) {
+        boolean validationResult = ArrayValidator.isValid(line);
+        if (validationResult) {
+            logger.log(Level.INFO, "Read valid array: " + line);
+        } else {
+            logger.log(Level.INFO, "Read invalid array: " + line);
+        }
+        return validationResult;
     }
 }
