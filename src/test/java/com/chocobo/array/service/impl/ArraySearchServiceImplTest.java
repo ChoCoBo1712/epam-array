@@ -29,6 +29,11 @@ public class ArraySearchServiceImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findMinExceptionTest() throws CustomArrayException {
+        service.findMin(null);
+    }
+
     @Test
     public void findMaxTest() throws CustomArrayException {
         CustomArray array = new CustomArray(5);
@@ -41,6 +46,11 @@ public class ArraySearchServiceImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findMaxExceptionTest() throws CustomArrayException {
+        service.findMax(null);
+    }
+
     @Test
     public void findPositivesCountTest() throws CustomArrayException {
         CustomArray array = new CustomArray(5);
@@ -48,9 +58,14 @@ public class ArraySearchServiceImplTest {
             array.setElement(i, i + 1);
         }
 
-        int actual = service.findPositivesCount(array);
+        long actual = service.findPositivesCount(array);
         int expected = 5;
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findPositivesCountExceptionTest() throws CustomArrayException {
+        service.findPositivesCount(null);
     }
 
     @Test
@@ -60,8 +75,13 @@ public class ArraySearchServiceImplTest {
             array.setElement(i, i - 2);
         }
 
-        int actual = service.findNegativesCount(array);
+        long actual = service.findNegativesCount(array);
         int expected = 2;
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findNegativesCountExceptionTest() throws CustomArrayException {
+        service.findNegativesCount(null);
     }
 }

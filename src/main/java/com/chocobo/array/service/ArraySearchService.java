@@ -7,6 +7,6 @@ public interface ArraySearchService {
 
     int findMin(CustomArray array) throws CustomArrayException;
     int findMax(CustomArray array) throws CustomArrayException;
-    int findPositivesCount(CustomArray array) throws CustomArrayException;
-    int findNegativesCount(CustomArray array) throws CustomArrayException;
+    long findPositivesCount(CustomArray array) throws CustomArrayException;
+    long findNegativesCount(CustomArray array) throws CustomArrayException;
 }

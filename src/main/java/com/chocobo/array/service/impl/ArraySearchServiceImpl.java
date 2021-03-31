@@ -13,70 +13,56 @@ public class ArraySearchServiceImpl implements ArraySearchService {
 
     @Override
     public int findMin(CustomArray array) throws CustomArrayException {
-        try {
-            int min = array.getElement(0);
-            for (int i = 1; i < array.getLength(); i++) {
-                if (array.getElement(i) < min) {
-                    min = array.getElement(i);
-                }
-            }
-            logger.log(Level.INFO, "Minimal value is " + min);
-            return min;
-
-        } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
-            throw e;
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+        int min = array.toIntStream()
+                .min()
+                .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
+        logger.log(Level.INFO, "Minimal value is " + min);
+        return min;
     }
 
     @Override
     public int findMax(CustomArray array) throws CustomArrayException {
-        try {
-            int max = array.getElement(0);
-            for (int i = 1; i < array.getLength(); i++) {
-                if (array.getElement(i) > max) {
-                    max = array.getElement(i);
-                }
-            }
-
-            logger.log(Level.INFO, "Maximal value is " + max);
-            return max;
-        } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
-            throw e;
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+        int max = array.toIntStream()
+                .max()
+                .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
+        logger.log(Level.INFO, "Maximal value is " + max);
+        return max;
     }
 
     @Override
-    public int findPositivesCount(CustomArray array) throws CustomArrayException {
-        int count = 0;
-        for (int i = 0; i < array.getLength(); i++) {
-            try {
-                if (array.getElement(i) >= 0) {
-                    count++;
-                }
-            } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
-                throw e;
-            }
+    public long findPositivesCount(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+        long count = array.toIntStream()
+                .filter(element -> element >= 0)
+                .count();
         logger.log(Level.INFO, "Positives count is " + count);
         return count;
     }
 
     @Override
-    public int findNegativesCount(CustomArray array) throws CustomArrayException {
-        int count = 0;
-        for (int i = 0; i < array.getLength(); i++) {
-            try {
-                if (array.getElement(i) < 0) {
-                    count++;
-                }
-            } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
-                throw e;
-            }
+    public long findNegativesCount(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+        long count = array.toIntStream()
+                .filter(element -> element < 0)
+                .count();
         logger.log(Level.INFO, "Negatives count is " + count);
         return count;
     }
