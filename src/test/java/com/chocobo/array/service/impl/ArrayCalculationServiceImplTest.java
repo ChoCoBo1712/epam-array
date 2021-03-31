@@ -29,10 +29,20 @@ public class ArrayCalculationServiceImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findSumExceptionTest() throws CustomArrayException {
+        service.findSum(null);
+    }
+
     @Test
     public void findAverageTest() throws CustomArrayException {
         double actual = service.findAverage(array);
         int expected = 3;
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findAverageExceptionTest() throws CustomArrayException {
+        service.findAverage(null);
     }
 }

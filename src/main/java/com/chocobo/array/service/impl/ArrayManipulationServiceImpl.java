@@ -12,24 +12,32 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public void replaceNegatives(CustomArray array, int number) throws CustomArrayException {
+    public CustomArray replaceNegatives(CustomArray array, int number) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
         }
 
-
-        logger.log(Level.INFO, "Negatives replaced with " + number + ": " + array.toString());
+        int[] newArray = array.toIntStream()
+                .map(element -> element < 0 ? number : element)
+                .toArray();
+        CustomArray resultArray = new CustomArray(newArray);
+        logger.log(Level.INFO, "Negatives replaced with " + number + ": " + resultArray.toString());
+        return resultArray;
     }
 
     @Override
-    public void replacePositives(CustomArray array, int number) throws CustomArrayException {
+    public CustomArray replacePositives(CustomArray array, int number) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
         }
 
-
-        logger.log(Level.INFO, "Positives replaced with " + number + ": " + array.toString());
+        int[] newArray = array.toIntStream()
+                .map(element -> element >= 0 ? number : element)
+                .toArray();
+        CustomArray resultArray = new CustomArray(newArray);
+        logger.log(Level.INFO, "Positives replaced with " + number + ": " + resultArray.toString());
+        return resultArray;
     }
 }
