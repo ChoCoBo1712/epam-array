@@ -4,27 +4,23 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArrayCalculationService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ArrayCalculationServiceImplTest {
 
-    private CustomArray array;
-    private ArrayCalculationService service;
+    private final ArrayCalculationService service = new ArrayCalculationServiceImpl();
 
-    @BeforeClass
-    public void setUp() throws CustomArrayException {
-        array = new CustomArray(5);
+    public CustomArray createArray() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
             array.setElement(i, i + 1);
         }
-
-        service = new ArrayCalculationServiceImpl();
+        return array;
     }
 
     @Test
     public void findSumTest() throws CustomArrayException {
-        long actual = service.findSum(array);
+        long actual = service.findSum(createArray());
         int expected = 15;
         Assert.assertEquals(actual, expected);
     }
@@ -36,7 +32,7 @@ public class ArrayCalculationServiceImplTest {
 
     @Test
     public void findAverageTest() throws CustomArrayException {
-        double actual = service.findAverage(array);
+        double actual = service.findAverage(createArray());
         int expected = 3;
         Assert.assertEquals(actual, expected);
     }

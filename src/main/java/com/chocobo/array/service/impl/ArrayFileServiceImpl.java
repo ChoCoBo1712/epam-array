@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 
 public class ArrayFileServiceImpl implements ArrayFileService {
@@ -29,7 +28,7 @@ public class ArrayFileServiceImpl implements ArrayFileService {
             ArrayCreator arrayCreator = new ArrayCreatorImpl();
             Stream<String> stream = fileReader.readToStream(filePath);
             String[] lines = streamParser.parseStream(stream);
-            for (String line: lines) {
+            for (String line : lines) {
                 if (ArrayValidator.isValid(line)) {
                     logger.log(Level.INFO, "Read valid array: " + line);
                     return arrayCreator.createFromString(line);

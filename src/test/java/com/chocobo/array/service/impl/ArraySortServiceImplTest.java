@@ -4,31 +4,35 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArraySortService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ArraySortServiceImplTest {
 
-    private CustomArray array;
-    private CustomArray sortedArray;
-    private ArraySortService service;
+    private final ArraySortService service = new ArraySortServiceImpl();
 
-    @BeforeClass
-    public void setUp() throws CustomArrayException {
-        array = new CustomArray(5);
-        sortedArray = new CustomArray(5);
+    public CustomArray createArray() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
             array.setElement(i, array.getLength() - i);
+        }
+        return array;
+    }
+
+    public CustomArray createSortedArray() throws CustomArrayException {
+        CustomArray sortedArray = new CustomArray(5);
+        for (int i = 0; i < sortedArray.getLength(); i++) {
             sortedArray.setElement(i, i + 1);
         }
-
-        service = new ArraySortServiceImpl();
+        return sortedArray;
     }
 
     @Test
     public void insertionSortTest() throws CustomArrayException {
-        service.insertionSort(array);
-        Assert.assertEquals(array, sortedArray);
+        CustomArray actual = createArray();
+        CustomArray expected = createSortedArray();
+
+        service.insertionSort(actual);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)
@@ -38,8 +42,11 @@ public class ArraySortServiceImplTest {
 
     @Test
     public void selectionSortTest() throws CustomArrayException {
-        service.selectionSort(array);
-        Assert.assertEquals(array, sortedArray);
+        CustomArray actual = createArray();
+        CustomArray expected = createSortedArray();
+
+        service.selectionSort(actual);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)
@@ -49,8 +56,11 @@ public class ArraySortServiceImplTest {
 
     @Test
     public void quickSortTest() throws CustomArrayException {
-        service.quickSort(array);
-        Assert.assertEquals(array, sortedArray);
+        CustomArray actual = createArray();
+        CustomArray expected = createSortedArray();
+
+        service.quickSort(actual);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)

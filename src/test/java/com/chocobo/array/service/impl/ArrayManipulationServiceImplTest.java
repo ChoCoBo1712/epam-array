@@ -4,26 +4,23 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArrayManipulationService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ArrayManipulationServiceImplTest {
 
-    private CustomArray array;
-    private ArrayManipulationService service;
+    private final ArrayManipulationService service = new ArrayManipulationServiceImpl();
 
-    @BeforeClass
-    public void setUp() throws CustomArrayException {
-        array = new CustomArray(5);
+    public CustomArray createArray() throws CustomArrayException {
+        CustomArray array = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
-            array.setElement(i, i - 1);
+            array.setElement(i, i + 1);
         }
-
-        service = new ArrayManipulationServiceImpl();
+        return array;
     }
 
     @Test
     public void replaceNegativesTest() throws CustomArrayException {
+        CustomArray array = createArray();
         CustomArray expected = new CustomArray(5);
         expected.setElement(0, 10);
         for (int i = 1; i < array.getLength(); i++) {
@@ -41,6 +38,7 @@ public class ArrayManipulationServiceImplTest {
 
     @Test
     public void replacePositivesTest() throws CustomArrayException {
+        CustomArray array = createArray();
         CustomArray expected = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
             array.setElement(i, i - 1);

@@ -2,20 +2,13 @@ package com.chocobo.array.service.impl;
 
 import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
-import com.chocobo.array.service.ArrayManipulationService;
 import com.chocobo.array.service.ArraySearchService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ArraySearchServiceImplTest {
 
-    private ArraySearchService service;
-
-    @BeforeClass
-    public void setUp() {
-        service = new ArraySearchServiceImpl();
-    }
+    private final ArraySearchService service = new ArraySearchServiceImpl();
 
     @Test
     public void findMinTest() throws CustomArrayException {

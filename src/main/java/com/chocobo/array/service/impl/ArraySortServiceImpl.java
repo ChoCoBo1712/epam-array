@@ -22,7 +22,7 @@ public class ArraySortServiceImpl implements ArraySortService {
             for (int i = 1; i < array.getLength(); i++) {
                 int current = array.getElement(i);
                 int j = i - 1;
-                while(j >= 0 && current < array.getElement(j)) {
+                while (j >= 0 && current < array.getElement(j)) {
                     array.setElement(j + 1, array.getElement(j));
                     j--;
                 }
@@ -46,7 +46,7 @@ public class ArraySortServiceImpl implements ArraySortService {
             for (int i = 0; i < array.getLength(); i++) {
                 int min = array.getElement(i);
                 int minIndex = i;
-                for (int j = i+1; j < array.getLength(); j++) {
+                for (int j = i + 1; j < array.getLength(); j++) {
                     if (array.getElement(j) < min) {
                         min = array.getElement(j);
                         minIndex = j;

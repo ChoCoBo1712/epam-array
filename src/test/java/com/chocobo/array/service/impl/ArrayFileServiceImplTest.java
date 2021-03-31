@@ -4,19 +4,11 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.service.ArrayFileService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class ArrayFileServiceImplTest {
 
-    private ArrayFileService service;
-
-    @BeforeClass
-    public void setUp() {
-        service = new ArrayFileServiceImpl();
-    }
+    private final ArrayFileService service = new ArrayFileServiceImpl();
 
     @Test
     public void readFromFileTest() throws CustomArrayException {

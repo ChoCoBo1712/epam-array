@@ -40,7 +40,7 @@ public class CustomArray {
         if (index < 0 || index >= collection.length) {
             throw new CustomArrayException("Index out of bounds");
         }
-        collection[index] =  number;
+        collection[index] = number;
     }
 
     public int getLength() {

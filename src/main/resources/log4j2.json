@@ -2,14 +2,16 @@
   "configuration": {
     "name": "Default",
     "properties": {
-      "property": [{
-        "name": "pattern_console",
-        "value": "%d %5level %c{1} - %msg%n"
-      },
-      {
-        "name": "pattern_file",
-        "value": "%d %5level %c{5} - %msg%n"
-      }]
+      "property": [
+        {
+          "name": "pattern_console",
+          "value": "%d %5level %c{1} - %msg%n"
+        },
+        {
+          "name": "pattern_file",
+          "value": "%d %5level %c{5} - %msg%n"
+        }
+      ]
     },
     "appenders": {
       "Console": {
@@ -24,7 +26,7 @@
         "fileName": "logs/last.log",
         "filePattern": "logs/${date:MM.yyyy}/array-%d{dd.MM.yyyy}-%i.log.gz",
         "policies": {
-          "SizeBasedTriggeringPolicy" : {
+          "SizeBasedTriggeringPolicy": {
             "size": "100 kB"
           },
           "PatternLayout": {
@@ -39,12 +41,14 @@
     "loggers": {
       "root": {
         "level": "debug",
-        "AppenderRef": [{
-          "ref": "Console"
-        },
-        {
-          "ref": "File"
-        }]
+        "AppenderRef": [
+          {
+            "ref": "Console"
+          },
+          {
+            "ref": "File"
+          }
+        ]
       }
     }
   }
