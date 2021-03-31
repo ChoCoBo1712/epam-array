@@ -1,9 +1,0 @@
-package com.chocobo.array.creator;
-
-import com.chocobo.array.entity.CustomArray;
-import com.chocobo.array.exception.CustomArrayException;
-
-public interface ArrayCreator {
-
-    CustomArray createFromString(String line) throws CustomArrayException;
-}

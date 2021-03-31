@@ -21,4 +21,13 @@ public class ArrayFileServiceImplTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void readFromFileInvalidExceptionTest() throws CustomArrayException {
+        service.readFromFile("src/main/resources/invalidArrays.txt");
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void readFromFileFileExceptionTest() throws CustomArrayException {
+        service.readFromFile("src/main/resources/invalid.txt");
+    }
 }

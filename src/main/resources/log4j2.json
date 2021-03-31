@@ -25,12 +25,12 @@
         "name": "File",
         "fileName": "logs/last.log",
         "filePattern": "logs/${date:MM.yyyy}/array-%d{dd.MM.yyyy}-%i.log.gz",
+        "PatternLayout": {
+          "pattern": "${pattern_file}"
+        },
         "policies": {
           "SizeBasedTriggeringPolicy": {
             "size": "100 kB"
-          },
-          "PatternLayout": {
-            "pattern": "${pattern_file}"
           }
         },
         "DefaultRolloverStrategy": {
