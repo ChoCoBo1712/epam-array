@@ -10,7 +10,6 @@ import com.chocobo.array.reader.FileReader;
 import com.chocobo.array.reader.impl.FileReaderImpl;
 import com.chocobo.array.service.ArrayFileService;
 import com.chocobo.array.validator.ArrayValidator;
-import com.chocobo.array.validator.impl.ArrayValidatorImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,12 +26,11 @@ public class ArrayFileServiceImpl implements ArrayFileService {
         try {
             FileReader fileReader = new FileReaderImpl();
             StreamParser streamParser = new StreamParserImpl();
-            ArrayValidator validator = new ArrayValidatorImpl();
             ArrayCreator arrayCreator = new ArrayCreatorImpl();
             Stream<String> stream = fileReader.readToStream(filePath);
             String[] lines = streamParser.parseStream(stream);
             for (String line: lines) {
-                if (validator.isValid(line)) {
+                if (ArrayValidator.isValid(line)) {
                     logger.log(Level.INFO, "Read valid array: " + line);
                     return arrayCreator.createFromString(line);
                 }
