@@ -5,6 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class CustomArrayTest {
 
     private CustomArray array;
@@ -46,6 +50,17 @@ public class CustomArrayTest {
     public void getLengthTest() {
         int actual = array.getLength();
         int expected = 5;
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void toIntStreamTest() {
+        int[] primitivesArray = new int[]{1, 2, 3, 4, 5};
+
+        IntStream actualStream = array.toIntStream();
+        IntStream expectedStream = IntStream.of(primitivesArray);
+        int[] actual = actualStream.toArray();
+        int[] expected = expectedStream.toArray();
         Assert.assertEquals(actual, expected);
     }
 }

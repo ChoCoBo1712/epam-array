@@ -24,7 +24,7 @@ public class ArrayCalculationServiceImplTest {
 
     @Test
     public void findSumTest() throws CustomArrayException {
-        int actual = service.findSum(array);
+        long actual = service.findSum(array);
         int expected = 15;
         Assert.assertEquals(actual, expected);
     }

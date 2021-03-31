@@ -28,8 +28,8 @@ public class CustomArray {
     }
 
     public IntStream toIntStream() {
-        int[] clone = collection.clone();
-        return IntStream.of(clone);
+        int[] array = collection.clone();
+        return IntStream.of(array);
     }
 
     public void setElement(int index, int number) throws CustomArrayException {

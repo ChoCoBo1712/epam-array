@@ -13,31 +13,23 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
 
     @Override
     public void replaceNegatives(CustomArray array, int number) throws CustomArrayException {
-        for (int i = 0; i < array.getLength(); i++) {
-            try {
-                if (array.getElement(i) < 0) {
-                    array.setElement(i, number);
-                }
-            } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
-                throw e;
-            }
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+
         logger.log(Level.INFO, "Negatives replaced with " + number + ": " + array.toString());
     }
 
     @Override
     public void replacePositives(CustomArray array, int number) throws CustomArrayException {
-        for (int i = 0; i < array.getLength(); i++) {
-            try {
-                if (array.getElement(i) >= 0) {
-                    array.setElement(i, number);
-                }
-            } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
-                throw e;
-            }
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
         }
+
+
         logger.log(Level.INFO, "Positives replaced with " + number + ": " + array.toString());
     }
 }

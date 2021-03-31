@@ -16,7 +16,7 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public int findSum(CustomArray array) throws CustomArrayException {
+    public long findSum(CustomArray array) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
