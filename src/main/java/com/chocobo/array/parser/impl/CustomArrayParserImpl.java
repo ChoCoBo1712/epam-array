@@ -7,9 +7,11 @@ import java.util.Arrays;
 
 public class CustomArrayParserImpl implements CustomArrayParser {
 
+    private final static String SPLITTER = ",";
+
     @Override
     public CustomArray parse(String line) {
-        int[] array = Arrays.stream(line.split(","))
+        int[] array = Arrays.stream(line.split(SPLITTER))
                 .map(String::trim)
                 .mapToInt(Integer::parseInt)
                 .toArray();
