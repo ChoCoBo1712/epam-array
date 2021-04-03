@@ -20,14 +20,14 @@ public class ArrayManipulationServiceImplTest {
 
     @Test
     public void replaceNegativesTest() throws CustomArrayException {
-        CustomArray array = createArray();
+        CustomArray actual = createArray();
         CustomArray expected = new CustomArray(5);
         expected.setElement(0, 10);
-        for (int i = 1; i < array.getLength(); i++) {
+        for (int i = 1; i < actual.getLength(); i++) {
             expected.setElement(i, i - 1);
         }
 
-        CustomArray actual = service.replaceNegatives(array, 10);
+        service.replaceNegatives(actual, 10);
         Assert.assertEquals(actual, expected);
     }
 
@@ -37,7 +37,43 @@ public class ArrayManipulationServiceImplTest {
     }
 
     @Test
+    public void replaceNegativesStreamTest() throws CustomArrayException {
+        CustomArray array = createArray();
+        CustomArray expected = new CustomArray(5);
+        expected.setElement(0, 10);
+        for (int i = 1; i < array.getLength(); i++) {
+            expected.setElement(i, i - 1);
+        }
+
+        CustomArray actual = service.replaceNegativesStream(array, 10);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void replaceNegativesStreamExceptionTest() throws CustomArrayException {
+        service.replaceNegativesStream(null, 10);
+    }
+
+    @Test
     public void replacePositivesTest() throws CustomArrayException {
+        CustomArray actual = createArray();
+        CustomArray expected = new CustomArray(5);
+        for (int i = 0; i < actual.getLength(); i++) {
+            actual.setElement(i, i - 1);
+            expected.setElement(i, -1);
+        }
+
+        service.replacePositives(actual, -1);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void replacePositivesExceptionTest() throws CustomArrayException {
+        service.replacePositives(null, 10);
+    }
+
+    @Test
+    public void replacePositivesStreamTest() throws CustomArrayException {
         CustomArray array = createArray();
         CustomArray expected = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
@@ -45,12 +81,12 @@ public class ArrayManipulationServiceImplTest {
             expected.setElement(i, -1);
         }
 
-        CustomArray actual = service.replacePositives(array, -1);
+        CustomArray actual = service.replacePositivesStream(array, -1);
         Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)
-    public void replacePositivesExceptionTest() throws CustomArrayException {
-        service.replacePositives(null, 10);
+    public void replacePositivesStreamExceptionTest() throws CustomArrayException {
+        service.replacePositivesStream(null, 10);
     }
 }

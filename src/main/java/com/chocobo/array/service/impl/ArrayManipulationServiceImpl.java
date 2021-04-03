@@ -12,7 +12,28 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public CustomArray replaceNegatives(CustomArray array, int number) throws CustomArrayException {
+    public void replaceNegatives(CustomArray array, int number) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
+        for (int i = 0; i < array.getLength(); i++) {
+            try {
+                if (array.getElement(i) < 0) {
+                    array.setElement(i, number);
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
+        }
+        logger.log(Level.INFO, "Negatives replaced with " + number + ": " + array.toString());
+    }
+
+
+    @Override
+    public CustomArray replaceNegativesStream(CustomArray array, int number) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
@@ -27,7 +48,27 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
     }
 
     @Override
-    public CustomArray replacePositives(CustomArray array, int number) throws CustomArrayException {
+    public void replacePositives(CustomArray array, int number) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
+        for (int i = 0; i < array.getLength(); i++) {
+            try {
+                if (array.getElement(i) >= 0) {
+                    array.setElement(i, number);
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
+        }
+        logger.log(Level.INFO, "Positives replaced with " + number + ": " + array.toString());
+    }
+
+    @Override
+    public CustomArray replacePositivesStream(CustomArray array, int number) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
