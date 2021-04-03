@@ -18,6 +18,26 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
             throw new CustomArrayException("Array is null");
         }
 
+        long sum = 0;
+        for (int i = 0; i < array.getLength(); i++) {
+            try {
+                sum += array.getElement(i);
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
+        }
+        logger.log(Level.INFO, "Array sum is " + sum);
+        return sum;
+    }
+
+    @Override
+    public long findSumStream(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         int sum = array.toIntStream().sum();
         logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
@@ -25,6 +45,18 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
 
     @Override
     public double findAverage(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
+        double average = (double) findSum(array) / array.getLength();
+        logger.log(Level.INFO, "Array average is " + average);
+        return average;
+    }
+
+        @Override
+    public double findAverageStream(CustomArray array) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");

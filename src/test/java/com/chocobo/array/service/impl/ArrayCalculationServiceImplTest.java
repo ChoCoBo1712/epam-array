@@ -31,6 +31,18 @@ public class ArrayCalculationServiceImplTest {
     }
 
     @Test
+    public void findSumStreamTest() throws CustomArrayException {
+        long actual = service.findSumStream(createArray());
+        int expected = 15;
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findSumStreamExceptionTest() throws CustomArrayException {
+        service.findSumStream(null);
+    }
+
+    @Test
     public void findAverageTest() throws CustomArrayException {
         double actual = service.findAverage(createArray());
         int expected = 3;
@@ -40,5 +52,17 @@ public class ArrayCalculationServiceImplTest {
     @Test(expectedExceptions = CustomArrayException.class)
     public void findAverageExceptionTest() throws CustomArrayException {
         service.findAverage(null);
+    }
+
+    @Test
+    public void findAverageStreamTest() throws CustomArrayException {
+        double actual = service.findAverageStream(createArray());
+        int expected = 3;
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(expectedExceptions = CustomArrayException.class)
+    public void findAverageStreamExceptionTest() throws CustomArrayException {
+        service.findAverageStream(null);
     }
 }
