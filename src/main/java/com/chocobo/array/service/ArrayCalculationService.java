@@ -6,10 +6,8 @@ import com.chocobo.array.exception.CustomArrayException;
 public interface ArrayCalculationService {
 
     long findSum(CustomArray array) throws CustomArrayException;
-
     long findSumStream(CustomArray array) throws CustomArrayException;
 
     double findAverage(CustomArray array) throws CustomArrayException;
-
     double findAverageStream(CustomArray array) throws CustomArrayException;
 }

@@ -18,6 +18,29 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
+        try {
+            int min = array.getElement(0);
+            for (int i = 1; i < array.getLength(); i++) {
+                if (array.getElement(i) < min) {
+                    min = array.getElement(i);
+                }
+            }
+            logger.log(Level.INFO, "Minimal value is " + min);
+            return min;
+
+        } catch (CustomArrayException e) {
+            logger.log(Level.ERROR, "Index out of bounds");
+            throw e;
+        }
+    }
+
+    @Override
+    public int findMinStream(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         int min = array.toIntStream()
                 .min()
                 .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
@@ -27,6 +50,29 @@ public class ArraySearchServiceImpl implements ArraySearchService {
 
     @Override
     public int findMax(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
+        try {
+            int max = array.getElement(0);
+            for (int i = 1; i < array.getLength(); i++) {
+                if (array.getElement(i) > max) {
+                    max = array.getElement(i);
+                }
+            }
+
+            logger.log(Level.INFO, "Maximal value is " + max);
+            return max;
+        } catch (CustomArrayException e) {
+            logger.log(Level.ERROR, "Index out of bounds");
+            throw e;
+        }
+    }
+
+    @Override
+    public int findMaxStream(CustomArray array) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");
@@ -46,6 +92,29 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
+        long count = 0;
+        for (int i = 0; i < array.getLength(); i++) {
+            try {
+                if (array.getElement(i) >= 0) {
+                    count++;
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
+        }
+
+        logger.log(Level.INFO, "Positives count is " + count);
+        return count;
+    }
+
+    @Override
+    public long findPositivesCountStream(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
         long count = array.toIntStream()
                 .filter(element -> element >= 0)
                 .count();
@@ -55,6 +124,29 @@ public class ArraySearchServiceImpl implements ArraySearchService {
 
     @Override
     public long findNegativesCount(CustomArray array) throws CustomArrayException {
+        if (array == null) {
+            logger.log(Level.ERROR, "Array is null");
+            throw new CustomArrayException("Array is null");
+        }
+
+        long count = 0;
+        for (int i = 0; i < array.getLength(); i++) {
+            try {
+                if (array.getElement(i) < 0) {
+                    count++;
+                }
+            } catch (CustomArrayException e) {
+                logger.log(Level.ERROR, "Index out of bounds");
+                throw e;
+            }
+        }
+
+        logger.log(Level.INFO, "Negatives count is " + count);
+        return count;
+    }
+
+    @Override
+    public long findNegativesCountStream(CustomArray array) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
             throw new CustomArrayException("Array is null");

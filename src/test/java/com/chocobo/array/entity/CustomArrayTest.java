@@ -59,5 +59,4 @@ public class CustomArrayTest {
         int[] expected = expectedStream.toArray();
         Assert.assertEquals(actual, expected);
     }
-    // TODO: add tests for reader, parser, validator
 }
