@@ -6,5 +6,5 @@ import java.util.stream.Stream;
 
 public interface CustomArrayParser {
 
-    CustomArray parse(String line);
+    int[] parse(String line);
 }

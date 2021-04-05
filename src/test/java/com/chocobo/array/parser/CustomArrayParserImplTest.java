@@ -11,13 +11,10 @@ public class CustomArrayParserImplTest {
     private final CustomArrayParser parser = new CustomArrayParserImpl();
 
     @Test
-    public void parseTest() throws CustomArrayException {
-        CustomArray expected = new CustomArray(5);
-        for (int i = 0; i < expected.getLength(); i++) {
-            expected.setElement(i, i + 1);
-        }
+    public void parseTest() {
+        int[] expected = new int[]{1, 2, 3, 4, 5};
 
-        CustomArray actual = parser.parse("1, 2, 3, 4, 5");
+        int[] actual = parser.parse("1, 2, 3, 4, 5");
         Assert.assertEquals(actual, expected);
     }
 }

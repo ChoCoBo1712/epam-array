@@ -10,11 +10,10 @@ public class CustomArrayParserImpl implements CustomArrayParser {
     private final static String SPLITTER = ",";
 
     @Override
-    public CustomArray parse(String line) {
-        int[] array = Arrays.stream(line.split(SPLITTER))
+    public int[] parse(String line) {
+        return Arrays.stream(line.split(SPLITTER))
                 .map(String::trim)
                 .mapToInt(Integer::parseInt)
                 .toArray();
-        return new CustomArray(array);
     }
 }
