@@ -2,9 +2,9 @@ package com.chocobo.array.reader;
 
 import com.chocobo.array.exception.CustomArrayException;
 
-import java.util.stream.Stream;
+import java.util.List;
 
 public interface FileReader {
 
-    Stream<String> readToStream(String filePath) throws CustomArrayException;
+    List<String> readLinesToList(String filePath) throws CustomArrayException;
 }

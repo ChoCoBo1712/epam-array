@@ -6,21 +6,22 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+import static com.chocobo.array.constants.Constants.SPLITTER;
+
 public class CustomArrayValidator {
 
     private static final Logger logger = LogManager.getLogger();
-    private final static String SPLITTER = ",";
-    private final static String REGEX = "\\d+";
+    private static final String ONE_OR_MORE_DECIMAL_SYMBOLS_REGEX = "[+-]?\\d+";
 
     static public boolean isValidString(String line) {
-        boolean validationResult = Arrays.stream(line.split(SPLITTER))
+        boolean isValid = Arrays.stream(line.split(SPLITTER))
                 .map(String::trim)
-                .allMatch(string -> string.matches(REGEX));
-        if (validationResult) {
+                .allMatch(string -> string.matches(ONE_OR_MORE_DECIMAL_SYMBOLS_REGEX));
+        if (isValid) {
             logger.log(Level.INFO, "Read valid array: " + line);
         } else {
             logger.log(Level.INFO, "Read invalid array: " + line);
         }
-        return validationResult;
+        return isValid;
     }
 }

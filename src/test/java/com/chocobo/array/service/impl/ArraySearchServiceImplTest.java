@@ -86,7 +86,7 @@ public class ArraySearchServiceImplTest {
         }
 
         long actual = service.findPositivesCount(array);
-        int expected = 5;
+        long expected = 5;
         Assert.assertEquals(actual, expected);
     }
 
@@ -103,7 +103,7 @@ public class ArraySearchServiceImplTest {
         }
 
         long actual = service.findPositivesCountStream(array);
-        int expected = 5;
+        long expected = 5;
         Assert.assertEquals(actual, expected);
     }
 
@@ -120,7 +120,7 @@ public class ArraySearchServiceImplTest {
         }
 
         long actual = service.findNegativesCount(array);
-        int expected = 2;
+        long expected = 2;
         Assert.assertEquals(actual, expected);
     }
 
@@ -137,7 +137,7 @@ public class ArraySearchServiceImplTest {
         }
 
         long actual = service.findNegativesCountStream(array);
-        int expected = 2;
+        long expected = 2;
         Assert.assertEquals(actual, expected);
     }
 

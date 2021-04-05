@@ -29,7 +29,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             return min;
 
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
+            logger.log(Level.ERROR, "Index out of bounds", e);
             throw e;
         }
     }
@@ -66,7 +66,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             logger.log(Level.INFO, "Maximal value is " + max);
             return max;
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
+            logger.log(Level.ERROR, "Index out of bounds", e);
             throw e;
         }
     }
@@ -99,7 +99,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                     count++;
                 }
             } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
+                logger.log(Level.ERROR, "Index out of bounds", e);
                 throw e;
             }
         }
@@ -136,7 +136,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
                     count++;
                 }
             } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
+                logger.log(Level.ERROR, "Index out of bounds", e);
                 throw e;
             }
         }

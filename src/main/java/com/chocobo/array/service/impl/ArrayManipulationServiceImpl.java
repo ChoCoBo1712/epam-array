@@ -24,7 +24,7 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
                     array.setElement(i, number);
                 }
             } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
+                logger.log(Level.ERROR, "Index out of bounds", e);
                 throw e;
             }
         }
@@ -63,7 +63,7 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
                     array.setElement(i, number);
                 }
             } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
+                logger.log(Level.ERROR, "Index out of bounds", e);
                 throw e;
             }
         }

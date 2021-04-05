@@ -13,18 +13,19 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static com.chocobo.array.constants.Constants.FILE_PATH;
+
 public class Main {
 
     private static final Logger logger = LogManager.getLogger();
-    public static final String FILE_PATH = "src/main/resources/files/arrays.txt";
 
-    public static void main(String[] args) throws CustomArrayException {
+    public static void main(String[] args) {
         try {
             FileReader fileReader = new FileReaderImpl();
             CustomArrayParser parser = new CustomArrayParserImpl();
             CustomArrayCreator creator = new CustomArrayCreatorImpl();
 
-            int[] array = fileReader.readToStream(FILE_PATH)
+            int[] array = fileReader.readLinesToList(FILE_PATH).stream()
                     .filter(CustomArrayValidator::isValidString)
                     .map(parser::parse)
                     .findFirst()
@@ -32,8 +33,9 @@ public class Main {
             CustomArray customArray = creator.createFromArgs(array);
             logger.log(Level.INFO, "Got CustomArray: " + customArray.toString());
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, e.getMessage());
-            throw e;
+            logger.log(Level.ERROR, e.getMessage(), e);
+        } catch (Exception e) {
+            logger.log(Level.ERROR, "Unexpected exception: ", e);
         }
     }
 }

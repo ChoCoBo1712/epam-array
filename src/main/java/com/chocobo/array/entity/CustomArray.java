@@ -53,7 +53,7 @@ public class CustomArray {
             return false;
         }
 
-        if (!(object instanceof CustomArray)) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
 

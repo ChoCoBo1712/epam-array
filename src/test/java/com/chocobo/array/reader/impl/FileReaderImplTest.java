@@ -2,11 +2,11 @@ package com.chocobo.array.reader.impl;
 
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.reader.FileReader;
-import com.chocobo.array.reader.impl.FileReaderImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
 
 public class FileReaderImplTest {
 
@@ -14,17 +14,14 @@ public class FileReaderImplTest {
 
     @Test
     public void readToStreamTest() throws CustomArrayException {
-        String[] string = {"1, 2b, 31, ff, 1", "1, 2, 3, 4, gg", "1, 2, 3, 4, 5"};
-        Stream<String> expectedStream = Stream.of(string);
-        Object[] expected = expectedStream.toArray();
+        List<String> actual = fileReader.readLinesToList("src/test/resources/files/arraysTest.txt");
 
-        Stream<String> actualStream = fileReader.readToStream("src/test/resources/files/arraysTest.txt");
-        Object[] actual = actualStream.toArray();
+        List<String> expected = Arrays.asList("1, 2b, 31, ff, 1", "1, 2, 3, 4, gg", "1, 2, 3, 4, 5");
         Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)
     public void readToStreamExceptionTest() throws CustomArrayException {
-        fileReader.readToStream("src/test/resources/files/arrayTest.txt");
+        fileReader.readLinesToList("src/test/resources/files/arrayTest.txt");
     }
 }

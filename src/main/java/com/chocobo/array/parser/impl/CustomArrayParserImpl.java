@@ -1,13 +1,12 @@
 package com.chocobo.array.parser.impl;
 
-import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.parser.CustomArrayParser;
 
 import java.util.Arrays;
 
-public class CustomArrayParserImpl implements CustomArrayParser {
+import static com.chocobo.array.constants.Constants.SPLITTER;
 
-    private final static String SPLITTER = ",";
+public class CustomArrayParserImpl implements CustomArrayParser {
 
     @Override
     public int[] parse(String line) {

@@ -23,7 +23,7 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
             try {
                 sum += array.getElement(i);
             } catch (CustomArrayException e) {
-                logger.log(Level.ERROR, "Index out of bounds");
+                logger.log(Level.ERROR, "Index out of bounds", e);
                 throw e;
             }
         }

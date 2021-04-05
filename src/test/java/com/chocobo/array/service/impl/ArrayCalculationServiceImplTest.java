@@ -10,7 +10,7 @@ public class ArrayCalculationServiceImplTest {
 
     private final ArrayCalculationService service = new ArrayCalculationServiceImpl();
 
-    private CustomArray createArray() throws CustomArrayException {
+    public CustomArray createArray() throws CustomArrayException {
         CustomArray array = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
             array.setElement(i, i + 1);
@@ -21,7 +21,7 @@ public class ArrayCalculationServiceImplTest {
     @Test
     public void findSumTest() throws CustomArrayException {
         long actual = service.findSum(createArray());
-        int expected = 15;
+        long expected = 15;
         Assert.assertEquals(actual, expected);
     }
 
@@ -33,7 +33,7 @@ public class ArrayCalculationServiceImplTest {
     @Test
     public void findSumStreamTest() throws CustomArrayException {
         long actual = service.findSumStream(createArray());
-        int expected = 15;
+        long expected = 15;
         Assert.assertEquals(actual, expected);
     }
 
@@ -45,7 +45,7 @@ public class ArrayCalculationServiceImplTest {
     @Test
     public void findAverageTest() throws CustomArrayException {
         double actual = service.findAverage(createArray());
-        int expected = 3;
+        double expected = 3;
         Assert.assertEquals(actual, expected);
     }
 
@@ -57,7 +57,7 @@ public class ArrayCalculationServiceImplTest {
     @Test
     public void findAverageStreamTest() throws CustomArrayException {
         double actual = service.findAverageStream(createArray());
-        int expected = 3;
+        double expected = 3;
         Assert.assertEquals(actual, expected);
     }
 

@@ -30,7 +30,7 @@ public class ArraySortServiceImpl implements ArraySortService {
             }
             logger.log(Level.INFO, "Insertion sort done: " + array.toString());
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
+            logger.log(Level.ERROR, "Index out of bounds", e);
             throw e;
         }
     }
@@ -58,7 +58,7 @@ public class ArraySortServiceImpl implements ArraySortService {
             }
             logger.log(Level.INFO, "Selection sort done: " + array.toString());
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
+            logger.log(Level.ERROR, "Index out of bounds", e);
             throw e;
         }
     }
@@ -74,7 +74,7 @@ public class ArraySortServiceImpl implements ArraySortService {
             internalQuickSort(array, 0, array.getLength() - 1);
             logger.log(Level.INFO, "Quick sort done: " + array.toString());
         } catch (CustomArrayException e) {
-            logger.log(Level.ERROR, "Index out of bounds");
+            logger.log(Level.ERROR, "Index out of bounds", e);
             throw e;
         }
     }
