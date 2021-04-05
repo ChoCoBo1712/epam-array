@@ -10,7 +10,7 @@ public class ArrayCalculationServiceImplTest {
 
     private final ArrayCalculationService service = new ArrayCalculationServiceImpl();
 
-    public CustomArray createArray() throws CustomArrayException {
+    private CustomArray createArray() throws CustomArrayException {
         CustomArray array = new CustomArray(5);
         for (int i = 0; i < array.getLength(); i++) {
             array.setElement(i, i + 1);

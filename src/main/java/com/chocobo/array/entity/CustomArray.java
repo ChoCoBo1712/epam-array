@@ -75,7 +75,7 @@ public class CustomArray {
     @Override
     public int hashCode() {
         int result = 7;
-        for (int j : this.collection) {
+        for (int j: this.collection) {
             result = 31 * result + j;
         }
         return result;
@@ -84,7 +84,7 @@ public class CustomArray {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder("[");
-        for (int j : this.collection) {
+        for (int j: this.collection) {
             string.append(j);
             string.append(", ");
         }
