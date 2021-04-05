@@ -1,7 +1,8 @@
-package com.chocobo.array.parser;
+package com.chocobo.array.parser.impl;
 
 import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
+import com.chocobo.array.parser.CustomArrayParser;
 import com.chocobo.array.parser.impl.CustomArrayParserImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;

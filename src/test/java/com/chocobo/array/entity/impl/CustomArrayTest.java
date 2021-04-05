@@ -1,5 +1,6 @@
-package com.chocobo.array.entity;
+package com.chocobo.array.entity.impl;
 
+import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -1,6 +1,7 @@
-package com.chocobo.array.reader;
+package com.chocobo.array.reader.impl;
 
 import com.chocobo.array.exception.CustomArrayException;
+import com.chocobo.array.reader.FileReader;
 import com.chocobo.array.reader.impl.FileReaderImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,13 +18,13 @@ public class FileReaderImplTest {
         Stream<String> expectedStream = Stream.of(string);
         Object[] expected = expectedStream.toArray();
 
-        Stream<String> actualStream = fileReader.readToStream("src/main/resources/arrays.txt");
+        Stream<String> actualStream = fileReader.readToStream("src/test/resources/files/arraysTest.txt");
         Object[] actual = actualStream.toArray();
         Assert.assertEquals(actual, expected);
     }
 
     @Test(expectedExceptions = CustomArrayException.class)
     public void readToStreamExceptionTest() throws CustomArrayException {
-        fileReader.readToStream("src/main/resources/array.txt");
+        fileReader.readToStream("src/test/resources/files/arrayTest.txt");
     }
 }

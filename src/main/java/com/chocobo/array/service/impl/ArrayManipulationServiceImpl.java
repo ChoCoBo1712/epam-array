@@ -42,7 +42,10 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
         int[] newArray = array.toIntStream()
                 .map(element -> element < 0 ? number : element)
                 .toArray();
-        CustomArray resultArray = new CustomArray(newArray);
+        CustomArray resultArray = new CustomArray(newArray.length);
+        for (int i = 0; i < resultArray.getLength(); i++) {
+            resultArray.setElement(i, newArray[i]);
+        }
         logger.log(Level.INFO, "Negatives replaced with " + number + ": " + resultArray.toString());
         return resultArray;
     }
@@ -77,7 +80,10 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
         int[] newArray = array.toIntStream()
                 .map(element -> element >= 0 ? number : element)
                 .toArray();
-        CustomArray resultArray = new CustomArray(newArray);
+        CustomArray resultArray = new CustomArray(newArray.length);
+        for (int i = 0; i < resultArray.getLength(); i++) {
+            resultArray.setElement(i, newArray[i]);
+        }
         logger.log(Level.INFO, "Positives replaced with " + number + ": " + resultArray.toString());
         return resultArray;
     }
