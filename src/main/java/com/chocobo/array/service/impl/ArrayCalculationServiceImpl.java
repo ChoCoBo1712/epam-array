@@ -55,7 +55,7 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
         return average;
     }
 
-        @Override
+    @Override
     public double findAverageStream(CustomArray array) throws CustomArrayException {
         if (array == null) {
             logger.log(Level.ERROR, "Array is null");
