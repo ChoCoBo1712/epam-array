@@ -20,10 +20,6 @@ public class CustomArray {
         collection = new int[length];
     }
 
-    public CustomArray(int... args) {
-        collection = args.clone();
-    }
-
     public int getElement(int index) throws CustomArrayException {
         if (index < 0 || index >= collection.length) {
             throw new CustomArrayException("Index out of bounds");
