@@ -16,13 +16,14 @@ import org.apache.logging.log4j.Logger;
 public class Main {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final FileReader fileReader = new FileReaderImpl();
-    private static final CustomArrayParser parser = new CustomArrayParserImpl();
-    public static final CustomArrayCreator creator = new CustomArrayCreatorImpl();
     public static final String FILE_PATH = "src/main/resources/files/arrays.txt";
 
     public static void main(String[] args) throws CustomArrayException {
         try {
+            FileReader fileReader = new FileReaderImpl();
+            CustomArrayParser parser = new CustomArrayParserImpl();
+            CustomArrayCreator creator = new CustomArrayCreatorImpl();
+
             int[] array = fileReader.readToStream(FILE_PATH)
                     .filter(CustomArrayValidator::isValidString)
                     .map(parser::parse)
