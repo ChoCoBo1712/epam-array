@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.stream.IntStream;
+
 public class ArrayCalculationServiceImpl implements ArrayCalculationService {
 
     private static final Logger logger = LogManager.getLogger();
@@ -38,7 +40,7 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
             throw new CustomArrayException("Array is null");
         }
 
-        int sum = array.toIntStream().sum();
+        int sum = IntStream.of(array.toIntArray()).sum();
         logger.log(Level.INFO, "Array sum is " + sum);
         return sum;
     }
@@ -62,7 +64,7 @@ public class ArrayCalculationServiceImpl implements ArrayCalculationService {
             throw new CustomArrayException("Array is null");
         }
 
-        double average = array.toIntStream()
+        double average = IntStream.of(array.toIntArray())
                 .average()
                 .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
         logger.log(Level.INFO, "Array average is " + average);

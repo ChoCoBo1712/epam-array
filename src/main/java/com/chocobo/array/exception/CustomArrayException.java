@@ -1,6 +1,7 @@
 package com.chocobo.array.exception;
 
 public class CustomArrayException extends Exception {
+
     public CustomArrayException() { }
 
     public CustomArrayException(String message) {
