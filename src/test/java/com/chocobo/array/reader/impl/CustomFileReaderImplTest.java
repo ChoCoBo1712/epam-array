@@ -1,16 +1,16 @@
 package com.chocobo.array.reader.impl;
 
 import com.chocobo.array.exception.CustomArrayException;
-import com.chocobo.array.reader.FileReader;
+import com.chocobo.array.reader.CustomFileReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class FileReaderImplTest {
+public class CustomFileReaderImplTest {
 
-    private final FileReader fileReader = new FileReaderImpl();
+    private final CustomFileReader fileReader = new CustomFileReaderImpl();
 
     @Test
     public void readToStreamTest() throws CustomArrayException {

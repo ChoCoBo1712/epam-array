@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
-import static com.chocobo.array.constants.Constants.SPLITTER;
+import static com.chocobo.array.config.Config.SPLITTER;
 
 public class CustomArrayValidator {
 
@@ -17,11 +17,7 @@ public class CustomArrayValidator {
         boolean isValid = Arrays.stream(line.split(SPLITTER))
                 .map(String::trim)
                 .allMatch(string -> string.matches(ONE_OR_MORE_DECIMAL_SYMBOLS_REGEX));
-        if (isValid) {
-            logger.log(Level.INFO, "Read valid array: " + line);
-        } else {
-            logger.log(Level.INFO, "Read invalid array: " + line);
-        }
+        logger.log(Level.INFO, isValid ? "Read valid array: " + line : "Read invalid array: " + line);
         return isValid;
     }
 }

@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.stream.IntStream;
-
 public class CustomArray {
 
     private static final Logger logger = LogManager.getLogger();
@@ -27,9 +25,8 @@ public class CustomArray {
         return collection[index];
     }
 
-    public IntStream toIntStream() {
-        int[] array = collection.clone();
-        return IntStream.of(array);
+    public int[] toIntArray() {
+        return collection.clone();
     }
 
     public void setElement(int index, int number) throws CustomArrayException {

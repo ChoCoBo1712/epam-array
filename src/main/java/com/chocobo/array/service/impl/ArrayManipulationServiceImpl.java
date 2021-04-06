@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.stream.IntStream;
+
 public class ArrayManipulationServiceImpl implements ArrayManipulationService {
 
     private static final Logger logger = LogManager.getLogger();
@@ -39,7 +41,7 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
             throw new CustomArrayException("Array is null");
         }
 
-        int[] newArray = array.toIntStream()
+        int[] newArray = IntStream.of(array.toIntArray())
                 .map(element -> element < 0 ? number : element)
                 .toArray();
         CustomArray resultArray = new CustomArray(newArray.length);
@@ -77,7 +79,7 @@ public class ArrayManipulationServiceImpl implements ArrayManipulationService {
             throw new CustomArrayException("Array is null");
         }
 
-        int[] newArray = array.toIntStream()
+        int[] newArray = IntStream.of(array.toIntArray())
                 .map(element -> element >= 0 ? number : element)
                 .toArray();
         CustomArray resultArray = new CustomArray(newArray.length);

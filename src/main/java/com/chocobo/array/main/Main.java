@@ -6,14 +6,14 @@ import com.chocobo.array.entity.CustomArray;
 import com.chocobo.array.exception.CustomArrayException;
 import com.chocobo.array.parser.CustomArrayParser;
 import com.chocobo.array.parser.impl.CustomArrayParserImpl;
-import com.chocobo.array.reader.FileReader;
-import com.chocobo.array.reader.impl.FileReaderImpl;
+import com.chocobo.array.reader.CustomFileReader;
+import com.chocobo.array.reader.impl.CustomFileReaderImpl;
 import com.chocobo.array.validator.CustomArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.chocobo.array.constants.Constants.FILE_PATH;
+import static com.chocobo.array.config.Config.FILE_PATH;
 
 public class Main {
 
@@ -21,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            FileReader fileReader = new FileReaderImpl();
+            CustomFileReader fileReader = new CustomFileReaderImpl();
             CustomArrayParser parser = new CustomArrayParserImpl();
             CustomArrayCreator creator = new CustomArrayCreatorImpl();
 

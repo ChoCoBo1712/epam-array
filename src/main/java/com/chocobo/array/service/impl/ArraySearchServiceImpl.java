@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.stream.IntStream;
+
 public class ArraySearchServiceImpl implements ArraySearchService {
 
     private static final Logger logger = LogManager.getLogger();
@@ -41,7 +43,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
-        int min = array.toIntStream()
+        int min = IntStream.of(array.toIntArray())
                 .min()
                 .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
         logger.log(Level.INFO, "Minimal value is " + min);
@@ -78,7 +80,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
-        int max = array.toIntStream()
+        int max = IntStream.of(array.toIntArray())
                 .max()
                 .orElseThrow(() -> new CustomArrayException("Array length must be greater then zero"));
         logger.log(Level.INFO, "Maximal value is " + max);
@@ -115,7 +117,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
-        long count = array.toIntStream()
+        long count = IntStream.of(array.toIntArray())
                 .filter(element -> element >= 0)
                 .count();
         logger.log(Level.INFO, "Positives count is " + count);
@@ -152,7 +154,7 @@ public class ArraySearchServiceImpl implements ArraySearchService {
             throw new CustomArrayException("Array is null");
         }
 
-        long count = array.toIntStream()
+        long count = IntStream.of(array.toIntArray())
                 .filter(element -> element < 0)
                 .count();
         logger.log(Level.INFO, "Negatives count is " + count);

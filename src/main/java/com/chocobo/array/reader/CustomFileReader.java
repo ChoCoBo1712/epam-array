@@ -4,7 +4,7 @@ import com.chocobo.array.exception.CustomArrayException;
 
 import java.util.List;
 
-public interface FileReader {
+public interface CustomFileReader {
 
     List<String> readLinesToList(String filePath) throws CustomArrayException;
 }

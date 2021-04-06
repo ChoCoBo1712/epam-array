@@ -4,7 +4,7 @@ import com.chocobo.array.parser.CustomArrayParser;
 
 import java.util.Arrays;
 
-import static com.chocobo.array.constants.Constants.SPLITTER;
+import static com.chocobo.array.config.Config.SPLITTER;
 
 public class CustomArrayParserImpl implements CustomArrayParser {
 
